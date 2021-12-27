@@ -1,16 +1,31 @@
 import React, { useState } from 'react';
 
+
 import Background from '../component/Background';
 import Paragraph from '../component/Paragraph';
 import Header from '../component/Header';
 import TextInput from '../component/TextInput';
 import CustomButton  from '../component/CustomButton';
+
 import { emailValidator, passwordValidator, nameValidator } from '../validators/Validate';
+
+import { Alert } from 'react-native';
+;
 
 export default function Registration({navigation}) {
  const [name, setName] = useState({value: '', error: ''})
  const [email, setEmail] = useState({value: '', error:''})
  const [password, setPassword] = useState({value:'', error:''})
+
+
+ const onRedirectionConfirmation = () =>
+    Alert.alert(
+      "Success",
+      "You have registered successfully!!",
+      [
+        { text: "OK", onPress: () => navigation.reset({index:0,  routes: [{ name: 'LoginScreen' }],})}
+      ]
+    );
 
  const onClickRegistration = () => {
   const emailError = emailValidator(email.value)
@@ -22,18 +37,13 @@ export default function Registration({navigation}) {
     setName({ ...name, error: nameError })
     return
   }
-
-  
-  navigation.reset({
-    index: 0,
-    routes: [{ name: 'LoginScreen' }],
-  })
+  onRedirectionConfirmation()
 }
 
 
   return (
    <Background>
-  
+ 
      <Header></Header>
 
     <Paragraph>Registration</Paragraph>
@@ -68,7 +78,7 @@ export default function Registration({navigation}) {
       />
       <CustomButton
         mode="contained"
-        onPress= {onClickRegistration}
+        onPress= {onClickRegistration }
       >
         Register
       </CustomButton>

@@ -5,15 +5,17 @@ import Login from './src/screens/Login'
 import StartScreen from './src/screens/StartScreen';
 import Registration from './src/screens/Registration';
 import HomeScreen from './src/screens/Home';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 const AppStack = createNativeStackNavigator();
 
 
 function App() {
   return (
+    <RootSiblingParent>  
     <NavigationContainer>
       <AppStack.Navigator 
-      initialRouteName='Registration'
+      initialRouteName='StartScreen'
       screenOptions={{headerShown: false}}
       >
         <AppStack.Screen name="StartScreen" component={StartScreen} />
@@ -23,6 +25,7 @@ function App() {
 
       </AppStack.Navigator>
     </NavigationContainer>
+    </RootSiblingParent>
   );
 }
 
