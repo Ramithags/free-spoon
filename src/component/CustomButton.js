@@ -1,5 +1,3 @@
-
-import { DarkTheme } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native'; 
 import { Button as PaperButton } from 'react-native-paper';
@@ -20,16 +18,7 @@ export default function CustomButton({mode, style, ...props}){
     )
 }
 
-export function BackButton({backButton}){
-  return(
-    <TouchableOpacity onPress={backButton} style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require('../icons/back.png')}
-      />
-    </TouchableOpacity>
-  )
-}
+
 
 const styles = StyleSheet.create({
     button: {
